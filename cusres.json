@@ -1,0 +1,95 @@
+{
+  "typeDocument": "CUSRES",
+  "sendDate": "2025-06-20",
+  "otherMeta": "string",
+  "body": {
+    "enteteFlux": {
+      "id": 0,
+      "sensFlux": "s",
+      "dateInsertion": "2025-06-20",
+      "dateReception": "2025-06-20",
+      "idMail": 0,
+      "typeMessage": "string",
+      "typeDocument": "str",
+      "numeroTtn": "string",
+      "numeroDemande": "string",
+      "codeTitre": 0,
+      "numDom": 0,
+      "dateDom": "2025-06-20",
+      "numDepot": 0,
+      "dateDepot": "2025-06-20",
+      "numDeclaration": 0,
+      "dateDeclaration": "2025-06-20",
+      "destinataire": "string",
+      "emetteur": "string",
+      "codeCloture": "s",
+      "status": "s",
+      "datePec": "2025-06-20"
+      
+    },
+    "detailCusres": {
+      "id": 0,
+      "typeMessage": "string",
+      "typeDocument": "string",
+      "etat": "string",
+      "referenceTtnNumeroDemande": "string",
+      "referenceTtnNumeroDossier": "string",
+      "referenceTtnNumeroMessage": "string",
+      "routageEmetteur": "string",
+      "routageDestinataire": "string",
+      "cleAuth": "string",
+      "numeroMessageOrigine": "string",
+      "enregistrementNumero": "string",
+      "enregistrementDate": "2025-06-20",
+      "montantDeviseCodeDevise": "string",
+      "montantDevisePtfn": 0,
+      "coursConversionDeviseFacturation": 0,
+      "valeurDouaneTotaleDinards": 0,
+      "statutDocumentCodeStatut": "string",
+      "statutDocumentEtatLaDeclaration1": "string",
+      "statutDocumentEtatLaDeclaration2": "string",
+      "statutDocumentEtatLaDeclaration3": "string",
+      "statutDocumentMessageInspecteur1": "string",
+      "statutDocumentMessageInspecteur2": "string",
+      "affectationNomInspecteur": "string",
+      "affectationDateAffectation": "2025-06-20",
+      "motPasse": "string",
+      "consignationAuTitreDesPenalitesMontant": 0
+    },
+    "observationCusresList": [
+      {
+        "id": {
+          "idFlux": 0,
+          "numObservation": 0
+        },
+        "decision": "string",
+        "reserve": "string",
+        "rdvVisite": "string",
+        "dateDecision": "2025-06-20",
+        "montantDesPenalites": 0
+      }
+    ],
+    "articleCusresList": [
+      {
+        "id": {
+          "idFlux": 0,
+          "numeroArticle": 0
+        },
+        "numeroNomenclature": "string",
+        "prixFactureNet": 0,
+        "referenceTceCodeTce": "string",
+        "referenceTceNumeroTce": "string",
+        "referenceTceCodeOrganismeDomiciliataire": "string",
+        "referenceTceNumeroGuichet": "string",
+        "referenceTceNumeroDom": "string",
+        "referenceTceAnneeDomiciliation": "string",
+        "reglementFinancierModeReglement": "string",
+        "reglementFinancierDesignation": "string",
+        "reglementFinancierDelai": 0,
+        "codeRegimeStatistique": "string",
+        "valeurDinarsFob": 0,
+        "valeurDinarsDouane": 0
+      }
+    ]
+  }
+}

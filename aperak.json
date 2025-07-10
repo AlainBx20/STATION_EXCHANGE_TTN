@@ -1,0 +1,75 @@
+{
+  "typeDocument": "string",
+  "sendDate": "2025-06-20",
+  "otherMeta": "string",
+  "body": {
+    "enteteFlux": {
+      "id": 0,
+      "sensFlux": "s",
+      "dateInsertion": "2025-06-20",
+      "dateReception": "2025-06-20",
+      "idMail": 0,
+      "typeMessage": "string",
+      "typeDocument": "str",
+      "numeroTtn": "string",
+      "numeroDemande": "string",
+      "codeTitre": 0,
+      "numDom": 0,
+      "dateDom": "2025-06-20",
+      "numDepot": 0,
+      "dateDepot": "2025-06-20",
+      "numDeclaration": 0,
+      "dateDeclaration": "2025-06-20",
+      "destinataire": "string",
+      "emetteur": "string",
+      "codeCloture": "s",
+      "status": "s",
+      "datePec": "2025-06-20"
+    },
+    "detailAperak": {
+      "id": {
+        "idFlux": 0,
+        "idLigne": 0
+      },
+      "typeMessage": "string",
+      "typeDocument": "string",
+      "etat": "str",
+      "refTtnNumMessage": "string",
+      "refTtnNumDossier": "string",
+      "refTtnNumDemande": "string",
+      "routageEmetteur": "string",
+      "routageDestinataire": "string",
+      "dateEmission": "2025-06-20",
+      "numeroMessageOrigine": "string",
+      "nomCodeMessageOrigine": "string",
+      "dateEmissionMessageOrigine": "2025-06-20"
+    },
+    "pieceJointes": [
+      {
+        "id": {
+          "idFlux": 0,
+          "numeroPieceJointe": 0
+        },
+        "typeDocument": "string",
+        "numDocument": "string",
+        "dateDocument": "2025-06-20",
+        "refFichierJoint": "string",
+        "refBaseImage": "string",
+        "path": "string"
+      }
+    ],
+    "aperakErreurs": [
+      {
+        "id": {
+          "idFlux": 0,
+          "idLigne": 0
+        },
+        "idErreur": 0,
+        "codeErreur": "string",
+        "libelleErreur": "string",
+        "referenceDonnee": "string",
+        "numeroOccurrenceDonnee": 0
+      }
+    ]
+  }
+}
