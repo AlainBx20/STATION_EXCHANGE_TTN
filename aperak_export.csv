@@ -1,0 +1,2 @@
+numeroDossierTtn,numeroMessage,codeTypeDoc,emetteur,codeFlux,dateTime,indTransact,destinataire,numeroDemande,messageId,codeErreur,libelleErreur,refErreur,indTransactAperak1,ncol
+"TTN123","MSG456","DOC","EMET","FLX","2024-06-20T10:00:00","Y","DEST","DEMAND123","MSGID789","ERR01","Erreur Libelle","REF123","N",1 
