@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.UUID;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Component
 public class AperakMapper {
@@ -29,7 +31,7 @@ public class AperakMapper {
         AperakDocumentDTO dto = new AperakDocumentDTO();
         Date mainDate = toUtilDate(entity.getDateTime());
         dto.setTypeDocument("APERAK");
-        dto.setSendDate(java.sql.Date.valueOf(DATE_FORMAT.format(mainDate)));
+        dto.setSendDate(mainDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
         dto.setOtherMeta(null);
 
         AperakDocumentDTO.Body body = new AperakDocumentDTO.Body();

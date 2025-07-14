@@ -3,11 +3,12 @@ package com.example.stationdechange.dto;
 import java.util.Date;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CusresDocumentDTO {
     private String typeDocument;
-    private Date sendDate;
+    private LocalDateTime sendDate;
     private String otherMeta;
     private Body body;
 
@@ -134,8 +135,8 @@ public class CusresDocumentDTO {
     // getters and setters for main class
     public String getTypeDocument() { return typeDocument; }
     public void setTypeDocument(String typeDocument) { this.typeDocument = typeDocument; }
-    public Date getSendDate() { return sendDate; }
-    public void setSendDate(Date sendDate) { this.sendDate = sendDate; }
+    public LocalDateTime getSendDate() { return sendDate; }
+    public void setSendDate(LocalDateTime sendDate) { this.sendDate = sendDate; }
     public String getOtherMeta() { return otherMeta; }
     public void setOtherMeta(String otherMeta) { this.otherMeta = otherMeta; }
     public Body getBody() { return body; }

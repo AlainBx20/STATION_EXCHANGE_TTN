@@ -6,9 +6,11 @@ import com.example.stationdechange.entity.PiecesJointes;
 import com.example.stationdechange.entity.Titres;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -16,7 +18,15 @@ public class CusresMapper {
     public CusresDocumentDTO mapFromEntity(Imputations entity, List<PiecesJointes> piecesJointesList, Titres titres) {
         CusresDocumentDTO dto = new CusresDocumentDTO();
         dto.setTypeDocument("CUSRES");
-        dto.setSendDate(entity.getDatimp() != null ? entity.getDatimp() : new Date());
+        dto.setSendDate(Optional.ofNullable(entity.getDatimp()).map(d -> {
+            if (d instanceof java.sql.Date) {
+                return ((java.sql.Date) d).toLocalDate().atStartOfDay();
+            } else if (d instanceof java.util.Date) {
+                return d.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            } else {
+                return LocalDateTime.now();
+            }
+        }).orElse(LocalDateTime.now()));
         dto.setOtherMeta(null);
 
         CusresDocumentDTO.Body body = new CusresDocumentDTO.Body();
@@ -39,16 +49,16 @@ public class CusresMapper {
         entete.dateDeclaration = titres != null && titres.getDatdecldou() != null ? titres.getDatdecldou() : entity.getDatimp();
         entete.destinataire = titres != null && titres.getDestinataire() != null ? titres.getDestinataire() : null;
         entete.emetteur = titres != null && titres.getEmetteur() != null ? titres.getEmetteur() : null;
-        entete.codeCloture = "s";
-        entete.status = "s";
+        entete.codeCloture = null;
+        entete.status = null;
         entete.datePec = entity.getDatimp();
         body.setEnteteFlux(entete);
 
         CusresDocumentDTO.DetailCusres detail = new CusresDocumentDTO.DetailCusres();
         detail.id = entity.getIdImp();
         detail.typeMessage = titres != null && titres.getTypemsg() != null ? titres.getTypemsg() : "CUSRES";
-        detail.typeDocument = titres != null && titres.getTypedoc() != null ? titres.getTypedoc() : "Z19";
-        detail.etat = titres != null && titres.getEtat() != null ? titres.getEtat() : "123";
+        detail.typeDocument = titres != null && titres.getTypedoc() != null ? titres.getTypedoc() : "Z41";
+        detail.etat = titres != null && titres.getEtat() != null ? titres.getEtat() : "Z01";
         detail.referenceTtnNumeroDemande = titres != null && titres.getNumDemandeTtn() != null ? titres.getNumDemandeTtn() : entity.getNumDossTtn();
         detail.referenceTtnNumeroDossier = entity.getNumDossTtn();
         detail.referenceTtnNumeroMessage = titres != null && titres.getNumMessage() != null ? titres.getNumMessage() : null;

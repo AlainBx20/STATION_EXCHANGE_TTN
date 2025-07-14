@@ -32,6 +32,8 @@ import java.util.Date;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Component
 public class SancrtJsonPrinter implements CommandLineRunner {
@@ -103,7 +105,7 @@ public class SancrtJsonPrinter implements CommandLineRunner {
                 JsonNode bodyNode = objectMapper.valueToTree(sancrtDto.getBody());
                 KafkaRequestModel request = new KafkaRequestModel(
                     sancrtDto.getTypeDocument() != null ? sancrtDto.getTypeDocument().toUpperCase() : "SANCRT",
-                    sancrtDto.getSendDate() != null ? sancrtDto.getSendDate() : new Date(),
+                    sancrtDto.getSendDate() != null ? sancrtDto.getSendDate() : LocalDateTime.now(),
                     metaData,
                     bodyNode);
                 logger.info("Sending SANCRT document to 'flux-inbound' with key: {}", key);
@@ -141,7 +143,7 @@ public class SancrtJsonPrinter implements CommandLineRunner {
                 JsonNode bodyNode = objectMapper.valueToTree(cusresDto.getBody());
                 KafkaRequestModel request = new KafkaRequestModel(
                     cusresDto.getTypeDocument() != null ? cusresDto.getTypeDocument().toUpperCase() : "CUSRES",
-                    cusresDto.getSendDate() != null ? cusresDto.getSendDate() : new Date(),
+                    cusresDto.getSendDate() != null ? cusresDto.getSendDate() : LocalDateTime.now(),
                     metaData,
                     bodyNode);
                 logger.info("Sending CUSRES document to 'flux-inbound' with key: {}", key);
@@ -178,7 +180,7 @@ public class SancrtJsonPrinter implements CommandLineRunner {
                 JsonNode bodyNode = objectMapper.valueToTree(aperakDto.getBody());
                 KafkaRequestModel request = new KafkaRequestModel(
                     aperakDto.getTypeDocument() != null ? aperakDto.getTypeDocument().toUpperCase() : "APERAK",
-                    aperakDto.getSendDate() != null ? aperakDto.getSendDate() : new Date(),
+                    aperakDto.getSendDate() != null ? aperakDto.getSendDate() : LocalDateTime.now(),
                     metaData,
                     bodyNode);
                 logger.info("Sending APERAK document to 'flux-inbound' with key: {}", key);

@@ -220,10 +220,10 @@ public class KafkaService {
                             imputations.setQtecompl(article.reglementFinancierDelai != null ? new java.math.BigDecimal(article.reglementFinancierDelai) : null);
                         }
                         imputations.setRegstat(detail.statutDocumentCodeStatut);
-                        imputations.setBurimp(detail.statutDocumentEtatLaDeclaration1);
+                        imputations.setBurimp(null);
                         imputations.setCoddev(detail.montantDeviseCodeDevise);
                         imputations.setTypedecl(detail.typeDocument);
-                        imputations.setNgp(detail.numeroMessageOrigine);
+                        imputations.setNgp(null);
                         imputations.setInspimp(detail.statutDocumentEtatLaDeclaration2);
                     }
                     imputationsRepository.save(imputations);
@@ -276,7 +276,7 @@ public class KafkaService {
             message = e.getMessage();
             logger.error("Error processing response", e);
         } finally {
-            ReceptionResponse response = new ReceptionResponse(status, idSeq, message, LocalDate.now());
+            ReceptionResponse response = new ReceptionResponse(status, idSeq, message, java.time.LocalDate.now().atStartOfDay());
             System.out.println("Kafka response: " + response);
             kafkaTemplateReceptionResponse.send(RESPONSE_TOPIC, key, response);
             logger.info("Sent response to topic '{}': {}", RESPONSE_TOPIC, response);
@@ -429,7 +429,7 @@ public class KafkaService {
                             imputations.setCoursDevImp(detail.coursConversionDeviseFacturation != null ? new java.math.BigDecimal(detail.coursConversionDeviseFacturation) : null);
                             imputations.setMntimp(detail.valeurDouaneTotaleDinards != null ? new java.math.BigDecimal(detail.valeurDouaneTotaleDinards) : null);
                             imputations.setMntimpDev(detail.montantDevisePtfn != null ? new java.math.BigDecimal(detail.montantDevisePtfn) : null);
-                            imputations.setModliv(detail.affectationNomInspecteur);
+                            imputations.setModliv(null);
                             imputations.setModreg(null);
                             imputations.setQtecompl(null);
                             if (cusresBody.getArticleCusresList() != null && !cusresBody.getArticleCusresList().isEmpty()) {
@@ -441,7 +441,7 @@ public class KafkaService {
                             imputations.setBurimp(detail.statutDocumentEtatLaDeclaration1);
                             imputations.setCoddev(detail.montantDeviseCodeDevise);
                             imputations.setTypedecl(detail.typeDocument);
-                            imputations.setNgp(detail.numeroMessageOrigine);
+                            imputations.setNgp(null);
                             imputations.setInspimp(detail.statutDocumentEtatLaDeclaration2);
                         }
                         imputationsRepository.save(imputations);

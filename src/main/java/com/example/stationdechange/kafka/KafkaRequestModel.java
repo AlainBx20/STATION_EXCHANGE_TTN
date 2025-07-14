@@ -2,8 +2,7 @@ package com.example.stationdechange.kafka;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.example.stationdechange.util.YearMonthDayArrayToDateDeserializer;
-import java.util.Date;
+import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -14,14 +13,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class KafkaRequestModel {
     private String typeDocument;
-    @JsonDeserialize(using = YearMonthDayArrayToDateDeserializer.class)
-    private Date sendDate;
+    private LocalDateTime sendDate;
     private String metaData;
     private JsonNode body;
 
     public KafkaRequestModel() {}
 
-    public KafkaRequestModel(String typeDocument, Date sendDate, String metaData, JsonNode body) {
+    public KafkaRequestModel(String typeDocument, LocalDateTime sendDate, String metaData, JsonNode body) {
         this.typeDocument = typeDocument;
         this.sendDate = sendDate;
         this.metaData = metaData;
@@ -42,7 +40,7 @@ public class KafkaRequestModel {
         this.typeDocument = typeDocument;
     }
 
-    public Date getSendDate() {
+    public LocalDateTime getSendDate() {
         return sendDate;
     }
 
@@ -52,7 +50,7 @@ public class KafkaRequestModel {
      * @param sendDate The send date as a Date.
      */
 
-    public void setSendDate(Date sendDate) {
+    public void setSendDate(LocalDateTime sendDate) {
         this.sendDate = sendDate;
     }
 

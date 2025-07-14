@@ -7,15 +7,16 @@ import com.example.stationdechange.entity.Nsh;
 import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Collections;
-import java.sql.Date;
 import java.util.UUID;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Component
 public class SancrtMapper {
     public SancrtDocumentDTO mapFromEntity(Titres titres, List<PiecesJointes> piecesJointesList, List<Nsh> nshList, List<SancrtDocumentDTO.Observation> observationList) {
         SancrtDocumentDTO dto = new SancrtDocumentDTO();
         dto.setTypeDocument("SANCRT");
-        dto.setSendDate(titres.getDatdom());
+        dto.setSendDate(titres.getDatdom() == null ? null : titres.getDatdom().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
         dto.setOtherMeta("");
 
         SancrtDocumentDTO.Body body = new SancrtDocumentDTO.Body();
@@ -147,7 +148,7 @@ public class SancrtMapper {
                 if (pj.getDateDoc() != null) {
                     dtoPj.dateDocument = java.sql.Date.valueOf(pj.getDateDoc());
                 } else {
-                    dtoPj.dateDocument = Date.valueOf(java.time.LocalDate.now());
+                    dtoPj.dateDocument = java.sql.Date.valueOf(java.time.LocalDate.now());
                 }
                 dtoPj.refFichierJoint = pj.getRefFichierJoint() != null ? pj.getRefFichierJoint() : null;
                 dtoPj.refBaseImage = pj.getRefBaseImage() != null ? pj.getRefBaseImage() : null;
@@ -162,7 +163,7 @@ public class SancrtMapper {
             dtoPj.id = id;
             dtoPj.typeDocument = "SAN";
             dtoPj.numDocument = null;
-            dtoPj.dateDocument = Date.valueOf(java.time.LocalDate.now());
+            dtoPj.dateDocument = java.sql.Date.valueOf(java.time.LocalDate.now());
             dtoPj.refFichierJoint = null;
             dtoPj.refBaseImage = null;
             dtoPj.path = "sancrt_path_";

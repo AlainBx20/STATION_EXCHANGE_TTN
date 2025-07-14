@@ -1,16 +1,15 @@
 package tn.smi.authentification.DTO;
 
-import java.util.Date;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ReceptionResponse {
     private String status;
     private Long idSeq;
     private String message;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate date;
-    public ReceptionResponse(String status, Long idSeq, String message, LocalDate date) {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime date;
+    public ReceptionResponse(String status, Long idSeq, String message, LocalDateTime date) {
         this.status = status;
         this.idSeq = idSeq;
         this.message = message;
@@ -30,11 +29,11 @@ public class ReceptionResponse {
         this.status = status;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

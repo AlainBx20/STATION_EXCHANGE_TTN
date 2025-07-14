@@ -1,6 +1,7 @@
 package com.example.stationdechange.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -8,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AperakDocumentDTO {
     private String typeDocument;
-    private Date sendDate;
+    private LocalDateTime sendDate;
     private String otherMeta;
     private Body body;
 
@@ -213,8 +214,8 @@ public class AperakDocumentDTO {
     }
     public String getTypeDocument() { return typeDocument; }
     public void setTypeDocument(String typeDocument) { this.typeDocument = typeDocument; }
-    public java.util.Date getSendDate() { return sendDate; }
-    public void setSendDate(java.util.Date sendDate) { this.sendDate = sendDate; }
+    public LocalDateTime getSendDate() { return sendDate; }
+    public void setSendDate(LocalDateTime sendDate) { this.sendDate = sendDate; }
     public String getOtherMeta() { return otherMeta; }
     public void setOtherMeta(String otherMeta) { this.otherMeta = otherMeta; }
     public Body getBody() { return body; }
